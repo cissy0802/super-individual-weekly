@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skill 05 · 元技能榜单 — Super Individual</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"SF Pro Display","Noto Sans SC",sans-serif;background:linear-gradient(135deg,#1a0b2e 0%,#16213e 50%,#0a0e1a 100%);color:#e8e6f5;line-height:1.75;min-height:100vh}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 80px}
+header{text-align:center;padding:60px 0 28px}
+.week-tag{display:inline-block;font-size:0.78rem;color:#00d4ff;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;border:1px solid rgba(0,212,255,0.4);padding:4px 12px;border-radius:20px;margin-bottom:14px}
+header h1{font-size:1.95rem;font-weight:800;background:linear-gradient(135deg,#ff6ec4 0%,#7b61ff 50%,#00d4ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:1px;line-height:1.3}
+header h2{font-size:1rem;color:#a0a4b8;margin-top:8px;font-weight:400;letter-spacing:1px}
+header .date{font-size:0.82rem;color:#6a6e88;margin-top:14px;font-family:"SF Mono",Menlo,monospace}
+header .pitch{margin-top:20px;font-size:0.95rem;color:#ff6ec4;font-style:italic}
+.xref{display:block;text-align:center;margin:0 0 8px;font-size:0.85rem}
+.xref a{color:#00d4ff;text-decoration:none;border-bottom:1px dotted rgba(0,212,255,0.4)}
+.intro{background:rgba(123,97,255,0.08);border-left:3px solid #7b61ff;padding:20px 22px;border-radius:8px;margin:36px 0;font-size:0.96rem}
+.intro h3{font-size:0.85rem;color:#7b61ff;letter-spacing:2px;margin-bottom:10px;font-family:"SF Mono",Menlo,monospace}
+.section{margin:48px 0;background:rgba(255,255,255,0.03);padding:28px 26px;border-radius:12px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.78rem;color:#00d4ff;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.35rem;color:#fff;margin-bottom:6px;font-weight:700;line-height:1.35}
+.section .claim{font-size:0.95rem;color:#ff6ec4;font-style:italic;margin-bottom:20px;border-bottom:1px dashed rgba(255,110,196,0.2);padding-bottom:14px}
+.section h3{font-size:0.95rem;color:#7b61ff;margin:22px 0 10px;letter-spacing:1px;font-family:"SF Mono",Menlo,monospace}
+.section p{margin-bottom:12px;color:#d8d6e8;font-size:0.95rem}
+.section ul,.section ol{margin:8px 0 14px 20px}
+.section li{margin-bottom:6px;color:#d8d6e8;font-size:0.94rem}
+pre{background:#0a0e1a;border:1px solid rgba(0,212,255,0.18);border-radius:8px;padding:16px 18px;overflow-x:auto;margin:14px 0;font-size:0.82rem;line-height:1.6}
+code{font-family:"SF Mono",Menlo,Consolas,monospace;color:#7be9d4}
+pre code{color:#d8e8e8}
+.tag-claude{color:#ff6ec4}.tag-gpt{color:#7be9d4}.tag-key{color:#ffd166}.tag-com{color:#6a6e88}
+.fail{background:rgba(255,87,87,0.08);border-left:3px solid #ff5757;padding:12px 16px;border-radius:6px;margin:14px 0;font-size:0.9rem}
+.fail strong{color:#ff8a8a}
+.res{font-size:0.86rem;color:#a0a4b8;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06)}
+.res a{color:#00d4ff;text-decoration:none;border-bottom:1px dotted rgba(0,212,255,0.4)}
+.glossary{background:rgba(0,212,255,0.05);border-radius:10px;padding:22px 24px;margin:36px 0;border:1px solid rgba(0,212,255,0.15)}
+.glossary h3{color:#00d4ff;font-size:0.95rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.glossary dl{font-size:0.9rem}
+.glossary dt{color:#ffd166;font-family:"SF Mono",Menlo,monospace;margin-top:10px;font-size:0.85rem}
+.glossary dd{color:#d8d6e8;margin-left:0;margin-top:2px}
+.refs{margin-top:30px}
+.refs h3{color:#7b61ff;font-size:0.9rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none;margin-left:0}
+.refs li{margin-bottom:8px;font-size:0.88rem}
+.refs a{color:#00d4ff;text-decoration:none;border-bottom:1px dotted rgba(0,212,255,0.3)}
+.diagram{background:#0a0e1a;border:1px solid rgba(123,97,255,0.25);border-radius:10px;padding:24px;margin:20px 0;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;line-height:1.7;color:#a0a4b8;overflow-x:auto;white-space:pre}
+.combo{background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(123,97,255,0.06));border:1px solid rgba(0,212,255,0.2);border-radius:12px;padding:26px 26px;margin:36px 0}
+.combo h3{color:#00d4ff;font-size:0.95rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.combo p{margin-bottom:8px;color:#d8d6e8;font-size:0.92rem}
+.thinking{margin:36px 0}
+.thinking h3{color:#00d4ff;font-size:0.95rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(10,14,26,0.4);border:1px solid rgba(0,212,255,0.18);border-radius:8px;padding:12px 16px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(0,212,255,0.06);border-color:rgba(0,212,255,0.4)}
+.thinking summary{cursor:pointer;color:#7be9d4;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#00d4ff;font-family:monospace;display:inline-block;width:1.2em}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking summary:hover{color:#fff}
+.thinking details > div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(0,212,255,0.2);color:#d8d6e8;font-size:0.9rem;line-height:1.75}
+.thinking details > div code{color:#7be9d4;background:rgba(0,0,0,0.3);padding:1px 5px;border-radius:3px;font-size:0.85rem}
+footer{text-align:center;padding:50px 0 12px;font-size:0.82rem;color:#6a6e88}
+@media(max-width:600px){header h1{font-size:1.5rem}.section{padding:20px 18px}.section h2{font-size:1.15rem}.diagram{font-size:0.62rem}}
+</style></head>
+<body>
+<div class="container">
+<header>
+<span class="week-tag">SKILL 05 / META · ROUNDUP</span>
+<h1>元技能榜单：造工具的工具</h1>
+<h2>官方给的九件套 — 四个能跑的、三份纸面契约、两个体检器</h2>
+<div class="date">2026-09-06 · BigCat</div>
+<p class="pitch">最反直觉的一条写在官方文档里：你并不需要一个「写 skill 的 skill」。所以这九件里最值钱的那半段，不是起草，是评估。</p>
+</header>
+<div class="xref">
+<a href="coding-skills-roundup-skill1.html">前置 → Skill 01 AI 编码 Skills 榜单（skill / subagent / MCP / hook 的分工）</a>
+</div>
+<div class="intro">
+<h3>// WHY THIS MATTERS</h3>
+<p>前四期讲的是「装别人的 skill」。到某一天你会发现，你真正想要的那个 skill 没人写过——它装着你团队的表结构、你的写作口径、你那套没人懂的部署流程。<strong>这一期收的是造工具的工具：起草、评估、打包、体检这条链上，官方真的给了什么。</strong>九个条目全部来自 Anthropic 官方仓库与官方文档，都能点开；第 03 节把这四个官方 skill 自己的写法拆成判据，第 04 节讲这一类最容易白装在哪。</p>
+</div>
+<!-- ============ 1 ============ -->
+<div class="section">
+<span class="num">// 01</span>
+<h2>先给清单：官方这九件，装法都在下面</h2>
+<div class="claim">论断：元技能不是一类 skill，是三层东西——四个真的会跑的 skill、三份定义「什么算合格」的纸面契约、两个装完之后回头查账的体检器。缺哪一层都会出问题。</div>
+<div class="diagram">条目                            替你干掉的那件事                      什么时候别装/别读
+──────────────────────────────────────────────────────────────────────────────────
+① skill-creator          起草 SKILL.md + 跑有/无 skill 对照评估   只想写一页说明书
+② mcp-builder            写 MCP server 的四阶段流程 + 10 道验收题 你不打算写 server
+③ web-artifacts-builder  React+shadcn 打成单文件 HTML 产物        手写一页静态 HTML
+④ claude-api             调 Claude API 的型号/定价/缓存/工具用法   项目用的不是 Claude
+──────────────────────────────────────────────────────────────────────────────────
+⑤ template/SKILL.md      背 frontmatter 字段的记忆负担            你已有自己的起手式
+⑥ agent-skills-spec      「什么算一个 skill」的跨 harness 真相源   只在单一 harness 内用
+⑦ 官方 authoring 最佳实践 拍脑袋定「写多长、拆几层」               ——这份建议都读
+──────────────────────────────────────────────────────────────────────────────────
+⑧ /skill-doctor          猜哪个 skill 在白吃 context               你总共只有三个 skill
+⑨ claude plugin validate 上手才发现清单 YAML 写错                 不打算发布给别人
+──────────────────────────────────────────────────────────────────────────────────
+①—④ 来自 anthropics/skills 仓库；⑤—⑥ 同仓的 template/ 与 spec/;⑧—⑨ 是 Claude Code 自带命令</div>
+<h3>怎么装（命令都是官方页面上的原文）</h3>
+<pre><code><span class="tag-com"># ① 官方 skills 仓库：注册 marketplace，再按包装</span>
+/plugin marketplace add anthropics/skills
+/plugin install example-skills@anthropic-agent-skills
+/plugin install document-skills@anthropic-agent-skills
+
+<span class="tag-com"># skill-creator 另有一条官方 plugin 源（Claude Code 文档给的就是这条）</span>
+/plugin install skill-creator@claude-plugins-official
+
+<span class="tag-com"># ⑧ 体检：列出每个 skill 的 context 开销与调用频次（需 v2.1.252+）</span>
+/skill-doctor
+
+<span class="tag-com"># ⑨ 校验：查 YAML 与清单语法</span>
+claude plugin validate .claude/skills
+</code></pre>
+<h3>逐条说人话</h3>
+<ul>
+<li><strong>① skill-creator</strong>（官方）：它真正的重头戏在后半段——为新 skill 写 2–3 条真实测试提示，然后<strong>并行开两组 subagent：一组带 skill、一组不带</strong>，用 <code>agents/grader.md</code> 按断言打分，跑 <code>scripts.aggregate_benchmark</code> 汇成 <code>benchmark.json</code>，再用 <code>eval-viewer/generate_review.py</code> 让人肉过一遍。Claude Code 文档描述的同一条链是：测试用例存进 skill 目录下的 <code>evals/evals.json</code> → 每条用例开独立 subagent 跑 → 结果进 <code>grading.json</code> → 通过率/耗时/token 汇进 <code>benchmark.json</code>。它还能做 A/B 与 description 调优。</li>
+<li><strong>② mcp-builder</strong>（官方）：把「写一个 MCP server」拆成研究规划 → 实现 → 审查测试 → 评估四阶段，Python(FastMCP) 与 Node/TypeScript 两套实现指南各带一份。硬要求是<strong>造 10 道验收题</strong>，每道必须互相独立、只读、复杂、真实、可核验——而且<strong>你得自己先做一遍答出来</strong>，答案要能做字符串比对。</li>
+<li><strong>③ web-artifacts-builder</strong>（官方，注意真名不是 artifacts-builder）：一整套把 React 18 + TypeScript + Tailwind + shadcn/ui 打成单文件 HTML 的工具链，确定性动作全写成脚本——<code>scripts/init-artifact.sh</code> 起项目、<code>scripts/bundle-artifact.sh</code> 用 Parcel 打成 <code>bundle.html</code>，初始化时就带好 40 多个 shadcn/ui 组件。</li>
+<li><strong>④ claude-api</strong>（官方）：先探测项目语言，再<strong>只读该语言那一份文档</strong>；共享部分按域拆成 <code>shared/prompt-caching.md</code>、<code>shared/cost-optimization.md</code>、<code>shared/model-migration.md</code>、<code>shared/token-counting.md</code> 等。它不是造 skill 的工具，收进本榜是因为它是<strong>「一个 SKILL.md 挂多份领域文档」这个结构最完整的官方范本</strong>（Skill 23 会把它拆开）。</li>
+<li><strong>⑤ template/SKILL.md</strong>：仓库 <code>template/</code> 下只有这一个文件，内容短到近乎挑衅——frontmatter 里 <code>name: template-skill</code> 加一句「把 description 换成这个 skill 做什么、什么时候该用」，正文只有一行 <code># Insert instructions below</code>。这就是官方认为的最小合格骨架。</li>
+<li><strong>⑥ agent-skills-spec</strong>：仓库里 <code>spec/agent-skills-spec.md</code> 现在<strong>只剩一句话</strong>——规范已迁至 <code>agentskills.io/specification</code>。这条本身就是情报：字段真相源已经从 Anthropic 仓库挪到了独立站点（Claude Code 的 skills 文档也把评估章节指向同一个站）。抄 2025 年的仓库快照会抄到旧版。</li>
+<li><strong>⑦ Skill authoring best practices</strong>（platform.claude.com）：第 03 节所有判据的原始出处，连「先写评估再写文档」的五步法和最后那张 checklist 都在这一页。</li>
+<li><strong>⑧ /skill-doctor</strong> 与 <strong>⑨ claude plugin validate</strong>：前者列出每个 skill 的 context 开销与调用频次，标出<strong>从没被触发过的</strong>、最近没用过的 plugin；后者查 <code>marketplace.json</code> 的 schema 错误、重名、源路径穿越、版本不一致。</li>
+</ul>
+<div class="fail"><strong>失败模式</strong>：只装 ①—④ 不读 ⑦。skill-creator 会老老实实按你的意思生成一份 SKILL.md，但「这份该拆成几个文件」「description 该怎么写才触发得准」这类判断，它给不了你答案——那是判据的活，写在最佳实践那一页。反过来只读文档不装 ①，你就永远只能靠感觉判断改动有没有变好。</div>
+<div class="res"><strong>进阶资源</strong> · <a href="https://github.com/anthropics/skills/tree/main/skills" target="_blank">anthropics/skills · skills 目录</a> · <a href="https://github.com/anthropics/skills/tree/main/template" target="_blank">template/</a> · <a href="https://code.claude.com/docs/en/skills" target="_blank">Claude Code · Skills 文档</a></div>
+</div>
+<!-- ============ 2 ============ -->
+<div class="section">
+<span class="num">// 02</span>
+<h2>这九条不能混着比：三层各自的分母不一样</h2>
+<div class="claim">论断：①—④ 是「会跑的代码」，⑤—⑦ 是「合格标准」，⑧—⑨ 是「事后查账」。拿 star 数比它们毫无意义，因为它们根本不在同一个市场里竞争。</div>
+<h3>背景与原理</h3>
+<p><code>anthropics/skills</code> 据 GitHub 仓库页 2026-09 约 <strong>17.5 万 star / 2.07 万 fork</strong>（本站 Skill 01 在 2026-08 记的是 17.2 万，一个月涨了约三千）。但这个数字量的是「示范仓库有多出名」，不是「里面哪个 skill 有人用」——整仓 19 个 skill 共用同一个 star 数，<code>skill-creator</code> 和 <code>slack-gif-creator</code> 在这个指标上完全等价，显然荒谬。</p>
+<p>更实际的分层理由是<strong>可替代性</strong>：⑤ template 与 ⑦ 最佳实践是纯文本，你抄进自己的仓库就永远拥有它，没有版本风险；①—④ 是会跑的东西，升级、依赖、脚本失效都跟着上游走；⑧—⑨ 是 Claude Code 的能力，换个 harness 就没有了。<strong>三层的保质期完全不同，别拿同一套标准挑。</strong></p>
+<h3>实战示例</h3>
+<p>还有个坑：<strong>名字会被抄错。</strong>③ 的真名是 <code>web-artifacts-builder</code>，不少聚合文章写成 <code>artifacts-builder</code>——照那个名字装会装不上、让 agent 去找会找不到。同理 ⑥ 的位置也已经变了：仓库里那个文件还在，但内容只剩一句「规范已搬到 agentskills.io」。<strong>硬规矩：任何要写进配置或喂给 agent 的名字与路径，一律以仓库目录或官方文档页面为准。</strong></p>
+<div class="fail"><strong>失败模式</strong>：把整个 <code>anthropics/skills</code> 克隆下来当元技能全家桶——那 19 个里有 <code>algorithmic-art</code>、<code>slack-gif-creator</code>、<code>canvas-design</code>，跟造 skill 一点关系都没有，只会把你的 description 候选池搅浑。</div>
+</div>
+<!-- ============ 3 ============ -->
+<div class="section">
+<span class="num">// 03</span>
+<h2>三分钟验货：把这四个官方 skill 自己的写法当判据</h2>
+<div class="claim">论断：判断一个元技能值不值得装，最省事的办法是看它自己有没有按官方那套标准写。上面四个官方 skill 恰好各自示范了一条，可以直接拿来量你遇到的下一个候选。</div>
+<h3>背景与原理</h3>
+<p>先记住硬约束（官方 authoring 页原文）：<code>name</code> ≤ <strong>64 字符</strong>，只许小写字母、数字、连字符，不能含 <code>anthropic</code> / <code>claude</code> 这类保留词；<code>description</code> ≤ <strong>1024 字符</strong>，非空，必须<strong>第三人称</strong>；正文<strong>建议 500 行以内</strong>；引用<strong>只许一层深</strong>。另外 Claude Code 文档还给了一个容易被忽略的数：skill 列表里 <code>description</code> 与 <code>when_to_use</code> 合起来<strong>按 1536 字符截断</strong>——写超了的部分不是被读到，是被砍掉。</p>
+<h3>实战示例</h3>
+<ol>
+<li><strong>description 是不是把触发词铺满了</strong>——看 <code>skill-creator</code> 的原文：「create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description」。一句里塞进 create / edit / optimize / run evals / benchmark 五组说法，因为用户嘴里可能是任何一种。<strong>只写「Helps with skills」的，要么永不触发，要么到处乱触发。</strong></li>
+<li><strong>有没有可机器核验的验收标准</strong>——<code>mcp-builder</code> 要求那 10 道题「答案要支持字符串比对」。这句是分水岭：写得出这句的作者，知道自己在追求什么；写不出的，交付标准就是「看起来还行」。</li>
+<li><strong>确定性动作有没有落成脚本</strong>——<code>web-artifacts-builder</code> 把起项目和打包写成 <code>init-artifact.sh</code> / <code>bundle-artifact.sh</code>，而不是每次让模型现编。官方的理由很直白：预置脚本更可靠、更省 token（<strong>只有输出计费，脚本内容不进上下文</strong>）、结果还一致。</li>
+<li><strong>reference 是不是按域拆、且只有一层</strong>——<code>claude-api</code> 按语言 + 按主题拆出十几份文档，SKILL.md 只当目录。官方明确警告：嵌套引用时模型常常只 <code>head -100</code> 扫一眼开头，拿到残缺信息；所以所有 reference 都要从 SKILL.md 直连。超过 100 行的 reference 还该自带目录。</li>
+<li><strong>自由度和任务脆弱性匹不匹配</strong>——官方比喻是「两侧是悬崖的窄桥 vs 空旷原野」。数据库迁移要低自由度（给死命令，并写明「不要改这条命令、不要加参数」）；代码审查要高自由度（给方向）。</li>
+<li><strong>它说不说得出自己解决的三个具体失败</strong>——官方 checklist 的原话是「至少创建三条评估」，并且要求「用 Haiku、Sonnet、Opus 各测一遍」。这条答不上来的元技能，你没法判断它有没有用。</li>
+</ol>
+<p><strong>顺序也别写反。</strong>官方 authoring 页把「<strong>先建评估，再写文档</strong>」写成加粗要求，五步是：跑无 skill 的真实任务、记下具体失败 → 就这些缺口造三个场景 → 量出基线 → 只写刚好够补缺口的字 → 迭代对照基线。它给的理由是：这样你解决的才是真问题，而不是想象出来的需求。</p>
+<div class="res"><strong>进阶资源</strong> · <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices" target="_blank">Anthropic · Skill authoring best practices</a>（本节六条判据与五步法的全部出处）</div>
+</div>
+<!-- ============ 4 ============ -->
+<div class="section">
+<span class="num">// 04</span>
+<h2>诚实的代价：官方文档亲口说「你不需要一个写 skill 的 skill」</h2>
+<div class="claim">论断：这一类最大的风险不是装错，是<strong>为免费的东西付费</strong>——起草 SKILL.md 这件事，Claude 本来就会。</div>
+<h3>背景与原理</h3>
+<p>authoring 最佳实践页里有一条 Tip，直白到有点扫兴：<strong>Claude 原生就懂 skill 的格式与结构，你不需要特殊系统提示词、也不需要一个「写 skill 的 skill」，直接叫它写，它就会生成结构正确、frontmatter 齐全的 SKILL.md。</strong></p>
+<p>那 <code>skill-creator</code> 的价值在哪?<strong>在它后半段那套评估机器，不在起草。</strong>并行开两组 subagent 做有/无 skill 对照、按断言打分、汇出 <code>benchmark.json</code>——这套东西你手搓要花一整天。冲着「帮我生成 SKILL.md」去装它，你付了 context 税，换回来的是本来就免费的东西。</p>
+<h3>实战示例</h3>
+<ul>
+<li><strong>评估这条线是分叉的，别以为写一份到处能跑。</strong>平台文档给了评估的 JSON 结构（<code>skills</code> / <code>query</code> / <code>files</code> / <code>expected_behavior</code>），却明说<strong>目前没有内置的方式来跑这些评估</strong>，要自己搭；Claude Code 侧的 <code>skill-creator</code> 则有自己一整套 <code>evals.json</code> → <code>grading.json</code> → <code>benchmark.json</code> 的流程。两条线不通用。</li>
+<li><strong>validate 过了 ≠ skill 没问题。</strong>官方文档写得很清楚：从 marketplace 目录跑校验时，Claude Code <strong>不会打开各插件的 skill / agent / command / hook 文件</strong>；要查那些文件里的错，得对单个插件跑校验。把 <code>claude plugin validate</code> 当质量门是误会——它是语法体检，不是内容体检。</li>
+<li><strong>元技能是「为一次性任务装的常驻工具」。</strong>你一年写五个 skill，却让 <code>skill-creator</code> 常驻一整年的 description 候选池。所以写完就该 <code>/skill-doctor</code> 回头查账——它会标出<strong>从没被触发过的 skill</strong>，那些直接删掉，留着只会让别的 skill 更难被选中。</li>
+<li><strong>生态位移是真实成本。</strong>规范搬到 <code>agentskills.io</code>、Claude Code 的评估章节也指过去，意味着你的 skill 库要跟着一个仓库之外的版本走。跨 harness 用的团队，该把当期规范的关键字段抄一份进自己仓库，别每次现查。</li>
+</ul>
+<div class="fail"><strong>失败模式</strong>：拿 <code>mcp-builder</code> 去写一个只包一次 HTTP 调用的小 server——那四阶段流程加 10 道验收题，会让你为一件半小时的事付一整天。它的划算区间是「你要给别人用、要长期维护」的 server。</div>
+</div>
+<!-- ============ 5 ============ -->
+<div class="combo">
+<h3>// 一页选购卡</h3>
+<p><strong>先装这三个</strong>：<code>skill-creator</code>（冲评估那半段装，不是冲起草）+ 把 <code>template/SKILL.md</code> 拷成自己仓库里的起手式（纯文本，零成本，永不过期）+ 把 <code>/skill-doctor</code> 变成两周一次的习惯。<code>mcp-builder</code> 只在你真要写一个长期维护的 server 时装；<code>claude-api</code> 当「多域 reference 怎么拆」的范本读；<code>web-artifacts-builder</code> 只在你真要做富交互 artifact 时装。</p>
+<p><strong>装之前三分钟</strong>：description 有没有铺满触发词且第三人称 · 有没有可机器核验的验收标准 · 确定性动作是不是落成了脚本 · reference 是否按域拆且只有一层 · 自由度是否匹配任务脆弱性 · 说不说得出它解决的三个具体失败。</p>
+<p><strong>写自己的 skill 时，顺序是</strong>：跑一遍没有 skill 的真实任务 → 记下具体失败 → 造三个场景 → 量基线 → 只写刚好够补缺口的字 → 对照基线迭代。<strong>别反过来先写文档。</strong></p>
+<p><strong>硬数字备查</strong>：name ≤ 64 字符 · description ≤ 1024 字符 · 列表里 description+when_to_use 按 1536 字符截断 · SKILL.md 正文 &lt; 500 行 · 引用只许一层深 · 至少三条评估 · Haiku/Sonnet/Opus 各测一遍。</p>
+</div>
+<div class="glossary">
+<h3>// 术语表</h3>
+<dl>
+<dt>元技能（meta-skill）</dt>
+<dd>用来造别的 skill / server / 应用的 skill。它的产物不是答案，是另一件工具。</dd>
+<dt>eval（评估集）</dt>
+<dd>一组「提示 + 期望行为」的测试用例，用来量一个 skill 到底有没有让结果变好。官方要求至少三条。</dd>
+<dt>baseline（基线）</dt>
+<dd>不带 skill 跑同一批任务得到的成绩。没有基线，「装了感觉更好」永远只是感觉。</dd>
+<dt>benchmark.json</dt>
+<dd><code>skill-creator</code> 汇总产物：把「带 skill」与「不带 skill」两组的通过率、耗时、token 放在一起对照。</dd>
+<dt>frontmatter</dt>
+<dd>SKILL.md 开头的 YAML 头。必填 <code>name</code>（≤64 字符）与 <code>description</code>（≤1024 字符），决定这个 skill 会不会被触发。</dd>
+<dt>progressive disclosure（渐进式披露）</dt>
+<dd>启动时只预加载所有 skill 的 name+description；正文触发后才读；附带文件用到才读；脚本只执行、内容不进上下文。</dd>
+</dl>
+</div>
+<div class="refs">
+<h3>// 延伸阅读</h3>
+<ul>
+<li><a href="https://github.com/anthropics/skills" target="_blank">anthropics/skills</a> — 本期 ①—⑥ 的源头；README 里 <code>/plugin marketplace add</code> 与两条 <code>/plugin install</code> 命令即上文原文</li>
+<li><a href="https://github.com/anthropics/skills/tree/main/skills/skill-creator" target="_blank">skills/skill-creator</a> — 起草 + 并行对照评估 + <code>agents/grader.md</code> 打分 + <code>scripts.aggregate_benchmark</code> 汇总的完整流程</li>
+<li><a href="https://github.com/anthropics/skills/tree/main/skills/mcp-builder" target="_blank">skills/mcp-builder</a> — 四阶段流程与「10 道独立、只读、复杂、真实、可核验的验收题」的原文</li>
+<li><a href="https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder" target="_blank">skills/web-artifacts-builder</a> — <code>init-artifact.sh</code> / <code>bundle-artifact.sh</code> 两个脚本，注意真名带 <code>web-</code> 前缀</li>
+<li><a href="https://github.com/anthropics/skills/tree/main/skills/claude-api" target="_blank">skills/claude-api</a> — 按语言 + 按域拆 reference 的官方范本；本系列 Skill 23 会拆开讲</li>
+<li><a href="https://github.com/anthropics/skills/tree/main/template" target="_blank">anthropics/skills · template/</a> — 只有一个 <code>SKILL.md</code>，官方认可的最小骨架</li>
+<li><a href="https://github.com/anthropics/skills/blob/main/spec/agent-skills-spec.md" target="_blank">anthropics/skills · spec/agent-skills-spec.md</a> — 现在只剩一句「规范已迁至 agentskills.io/specification」，规范真相源已外移</li>
+<li><a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices" target="_blank">Anthropic · Skill authoring best practices</a> — 字符上限、500 行、一层引用、自由度阶梯、「先写评估」五步法、最后的 checklist</li>
+<li><a href="https://code.claude.com/docs/en/skills" target="_blank">Claude Code · Extend Claude with skills</a> — <code>/plugin install skill-creator@claude-plugins-official</code>、<code>/skill-doctor</code>（需 v2.1.252+）、1536 字符截断、目录层级表</li>
+<li><a href="https://code.claude.com/docs/en/plugin-marketplaces" target="_blank">Claude Code · Plugin marketplaces</a> — <code>claude plugin validate</code> 查什么，以及「从 marketplace 目录跑时不打开 skill 文件」这条限制</li>
+<li><a href="coding-skills-roundup-skill1.html">本站 Skill 01 · AI 编码 Skills 榜单</a> — skill / subagent / MCP / hook 的分工，以及读榜三问</li>
+</ul>
+</div>
+<footer>BigCat · Super Individual · Skill 05 · 2026-09-06</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>

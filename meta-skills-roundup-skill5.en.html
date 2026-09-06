@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skill 05 · Meta-Skills Roundup — Super Individual</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"SF Pro Display","Noto Sans SC",sans-serif;background:linear-gradient(135deg,#1a0b2e 0%,#16213e 50%,#0a0e1a 100%);color:#e8e6f5;line-height:1.75;min-height:100vh}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 80px}
+header{text-align:center;padding:60px 0 28px}
+.week-tag{display:inline-block;font-size:0.78rem;color:#00d4ff;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;border:1px solid rgba(0,212,255,0.4);padding:4px 12px;border-radius:20px;margin-bottom:14px}
+header h1{font-size:1.95rem;font-weight:800;background:linear-gradient(135deg,#ff6ec4 0%,#7b61ff 50%,#00d4ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:1px;line-height:1.3}
+header h2{font-size:1rem;color:#a0a4b8;margin-top:8px;font-weight:400;letter-spacing:1px}
+header .date{font-size:0.82rem;color:#6a6e88;margin-top:14px;font-family:"SF Mono",Menlo,monospace}
+header .pitch{margin-top:20px;font-size:0.95rem;color:#ff6ec4;font-style:italic}
+.xref{display:block;text-align:center;margin:0 0 8px;font-size:0.85rem}
+.xref a{color:#00d4ff;text-decoration:none;border-bottom:1px dotted rgba(0,212,255,0.4)}
+.intro{background:rgba(123,97,255,0.08);border-left:3px solid #7b61ff;padding:20px 22px;border-radius:8px;margin:36px 0;font-size:0.96rem}
+.intro h3{font-size:0.85rem;color:#7b61ff;letter-spacing:2px;margin-bottom:10px;font-family:"SF Mono",Menlo,monospace}
+.section{margin:48px 0;background:rgba(255,255,255,0.03);padding:28px 26px;border-radius:12px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.78rem;color:#00d4ff;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.35rem;color:#fff;margin-bottom:6px;font-weight:700;line-height:1.35}
+.section .claim{font-size:0.95rem;color:#ff6ec4;font-style:italic;margin-bottom:20px;border-bottom:1px dashed rgba(255,110,196,0.2);padding-bottom:14px}
+.section h3{font-size:0.95rem;color:#7b61ff;margin:22px 0 10px;letter-spacing:1px;font-family:"SF Mono",Menlo,monospace}
+.section p{margin-bottom:12px;color:#d8d6e8;font-size:0.95rem}
+.section ul,.section ol{margin:8px 0 14px 20px}
+.section li{margin-bottom:6px;color:#d8d6e8;font-size:0.94rem}
+pre{background:#0a0e1a;border:1px solid rgba(0,212,255,0.18);border-radius:8px;padding:16px 18px;overflow-x:auto;margin:14px 0;font-size:0.82rem;line-height:1.6}
+code{font-family:"SF Mono",Menlo,Consolas,monospace;color:#7be9d4}
+pre code{color:#d8e8e8}
+.tag-claude{color:#ff6ec4}.tag-gpt{color:#7be9d4}.tag-key{color:#ffd166}.tag-com{color:#6a6e88}
+.fail{background:rgba(255,87,87,0.08);border-left:3px solid #ff5757;padding:12px 16px;border-radius:6px;margin:14px 0;font-size:0.9rem}
+.fail strong{color:#ff8a8a}
+.res{font-size:0.86rem;color:#a0a4b8;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06)}
+.res a{color:#00d4ff;text-decoration:none;border-bottom:1px dotted rgba(0,212,255,0.4)}
+.glossary{background:rgba(0,212,255,0.05);border-radius:10px;padding:22px 24px;margin:36px 0;border:1px solid rgba(0,212,255,0.15)}
+.glossary h3{color:#00d4ff;font-size:0.95rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.glossary dl{font-size:0.9rem}
+.glossary dt{color:#ffd166;font-family:"SF Mono",Menlo,monospace;margin-top:10px;font-size:0.85rem}
+.glossary dd{color:#d8d6e8;margin-left:0;margin-top:2px}
+.refs{margin-top:30px}
+.refs h3{color:#7b61ff;font-size:0.9rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none;margin-left:0}
+.refs li{margin-bottom:8px;font-size:0.88rem}
+.refs a{color:#00d4ff;text-decoration:none;border-bottom:1px dotted rgba(0,212,255,0.3)}
+.diagram{background:#0a0e1a;border:1px solid rgba(123,97,255,0.25);border-radius:10px;padding:24px;margin:20px 0;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;line-height:1.7;color:#a0a4b8;overflow-x:auto;white-space:pre}
+.combo{background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(123,97,255,0.06));border:1px solid rgba(0,212,255,0.2);border-radius:12px;padding:26px 26px;margin:36px 0}
+.combo h3{color:#00d4ff;font-size:0.95rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.combo p{margin-bottom:8px;color:#d8d6e8;font-size:0.92rem}
+.thinking{margin:36px 0}
+.thinking h3{color:#00d4ff;font-size:0.95rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(10,14,26,0.4);border:1px solid rgba(0,212,255,0.18);border-radius:8px;padding:12px 16px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(0,212,255,0.06);border-color:rgba(0,212,255,0.4)}
+.thinking summary{cursor:pointer;color:#7be9d4;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#00d4ff;font-family:monospace;display:inline-block;width:1.2em}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking summary:hover{color:#fff}
+.thinking details > div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(0,212,255,0.2);color:#d8d6e8;font-size:0.9rem;line-height:1.75}
+.thinking details > div code{color:#7be9d4;background:rgba(0,0,0,0.3);padding:1px 5px;border-radius:3px;font-size:0.85rem}
+footer{text-align:center;padding:50px 0 12px;font-size:0.82rem;color:#6a6e88}
+@media(max-width:600px){header h1{font-size:1.5rem}.section{padding:20px 18px}.section h2{font-size:1.15rem}.diagram{font-size:0.62rem}}
+</style></head>
+<body>
+<div class="container">
+<header>
+<span class="week-tag">SKILL 05 / META · ROUNDUP</span>
+<h1>Meta-Skills Roundup</h1>
+<h2>The official nine — four that run, three paper contracts, two auditors</h2>
+<div class="date">2026-09-06 · BigCat</div>
+<p class="pitch">The most counterintuitive line is in Anthropic's own docs: you do not need a "writing skills" skill. Which means the valuable half of this category isn't drafting. It's evaluation.</p>
+</header>
+<div class="xref">
+<a href="coding-skills-roundup-skill1.en.html">Prerequisite → Skill 01 AI Coding Skills Roundup (skill vs subagent vs MCP vs hook)</a>
+</div>
+<div class="intro">
+<h3>// WHY THIS MATTERS</h3>
+<p>The first four issues were about installing other people's skills. Sooner or later you hit the one nobody wrote — the one that carries your team's table schemas, your house voice, your undocumented deploy sequence. <strong>This issue collects the tools that build tools: what Anthropic actually ships for drafting, evaluating, packaging and auditing skills.</strong> All nine items come from the official repository or the official docs, and every one is a link you can open. Section 03 turns the four official skills' own construction into buying criteria; section 04 is where this category most often gets installed for nothing.</p>
+</div>
+<!-- ============ 1 ============ -->
+<div class="section">
+<span class="num">// 01</span>
+<h2>The list first: nine official items, with install commands</h2>
+<div class="claim">Claim: meta-skills aren't one category but three layers — four skills that actually execute, three paper contracts that define what "correct" means, and two auditors you run afterwards to check the bill. Skip a layer and something breaks.</div>
+<div class="diagram">Item                            What it takes off your plate           When not to bother
+──────────────────────────────────────────────────────────────────────────────────────
+① skill-creator          Draft SKILL.md + run with/without evals    You just want one page
+② mcp-builder            4-phase MCP server process + 10 eval Qs    You aren't writing one
+③ web-artifacts-builder  React+shadcn bundled into one HTML file    Hand-writing static HTML
+④ claude-api             Current model ids, pricing, caching, tools Project isn't on Claude
+──────────────────────────────────────────────────────────────────────────────────────
+⑤ template/SKILL.md      Memorizing the frontmatter fields          You have your own stub
+⑥ agent-skills-spec      Cross-harness source of truth for fields   Single-harness use only
+⑦ Authoring best practices  Guessing "how long, how many files"     — read this one anyway
+──────────────────────────────────────────────────────────────────────────────────────
+⑧ /skill-doctor          Guessing which skill eats context for free You only have three
+⑨ claude plugin validate Finding manifest YAML errors the hard way  Never shipping to others
+──────────────────────────────────────────────────────────────────────────────────────
+①—④ live in the anthropics/skills repo; ⑤—⑥ in that repo's template/ and spec/; ⑧—⑨ ship with Claude Code</div>
+<h3>How to install (commands quoted from the official pages)</h3>
+<pre><code><span class="tag-com"># ① The official skills repo: register the marketplace, then install by bundle</span>
+/plugin marketplace add anthropics/skills
+/plugin install example-skills@anthropic-agent-skills
+/plugin install document-skills@anthropic-agent-skills
+
+<span class="tag-com"># skill-creator also has an official plugin source (this is the line in the Claude Code docs)</span>
+/plugin install skill-creator@claude-plugins-official
+
+<span class="tag-com"># ⑧ Audit: context cost and invocation frequency per skill (needs v2.1.252+)</span>
+/skill-doctor
+
+<span class="tag-com"># ⑨ Validate: check YAML and manifest syntax</span>
+claude plugin validate .claude/skills
+</code></pre>
+<h3>Item by item</h3>
+<ul>
+<li><strong>① skill-creator</strong> (official): the real payload is the second half. You write 2–3 realistic test prompts, then it <strong>spawns parallel subagent runs with and without the skill</strong>, grades the outputs against your assertions using <code>agents/grader.md</code>, runs <code>scripts.aggregate_benchmark</code> into <code>benchmark.json</code>, and opens <code>eval-viewer/generate_review.py</code> for a human pass. The Claude Code docs describe the same chain as: cases stored in <code>evals/evals.json</code> inside the skill directory → one isolated subagent per case → results into <code>grading.json</code> → pass rate, time and tokens aggregated into <code>benchmark.json</code>. It also does blind A/B comparison and description tuning.</li>
+<li><strong>② mcp-builder</strong> (official): splits "write an MCP server" into research and planning → implementation → review and testing → evaluation, with separate implementation guides for Python (FastMCP) and Node/TypeScript. The hard requirement is <strong>ten evaluation questions</strong>, each independent, read-only, complex, realistic and verifiable — and <strong>you must solve each one yourself first</strong>, with answers that support string comparison.</li>
+<li><strong>③ web-artifacts-builder</strong> (official; note the real name is not <code>artifacts-builder</code>): a toolchain that bundles React 18 + TypeScript + Tailwind + shadcn/ui into a single self-contained HTML file. Every deterministic step is a script — <code>scripts/init-artifact.sh</code> scaffolds the project, <code>scripts/bundle-artifact.sh</code> uses Parcel to produce <code>bundle.html</code> — and the scaffold ships with 40+ shadcn/ui components pre-installed.</li>
+<li><strong>④ claude-api</strong> (official): detects the project's language first, then <strong>reads only that language's docs</strong>; shared material is split by domain into <code>shared/prompt-caching.md</code>, <code>shared/cost-optimization.md</code>, <code>shared/model-migration.md</code>, <code>shared/token-counting.md</code> and more. It isn't a skill-building tool; it's here because it is <strong>the most complete official specimen of "one SKILL.md indexing many domain files"</strong> (Skill 23 takes it apart).</li>
+<li><strong>⑤ template/SKILL.md</strong>: the repo's <code>template/</code> folder holds exactly one file, and it is almost provocatively short — frontmatter with <code>name: template-skill</code> plus one line telling you to replace the description with what the skill does and when Claude should use it, then a single body line, <code># Insert instructions below</code>. That is Anthropic's idea of a minimum viable skeleton.</li>
+<li><strong>⑥ agent-skills-spec</strong>: <code>spec/agent-skills-spec.md</code> in the repo is now <strong>one sentence</strong> — the spec has moved to <code>agentskills.io/specification</code>. That fact is itself the intelligence: the source of truth for skill fields has left Anthropic's repo for an independent site (Claude Code's skills page points its evaluation chapter at the same domain). Copy a 2025 snapshot of the repo and you are copying a stale spec.</li>
+<li><strong>⑦ Skill authoring best practices</strong> (platform.claude.com): the origin of every criterion in section 03, including the five-step "build evaluations first" method and the closing checklist.</li>
+<li><strong>⑧ /skill-doctor</strong> and <strong>⑨ claude plugin validate</strong>: the first lists context cost and usage frequency per skill and flags the ones <strong>never invoked</strong> plus plugins unused recently; the second checks <code>marketplace.json</code> for schema errors, duplicate plugin names, source path traversal and version mismatches.</li>
+</ul>
+<div class="fail"><strong>Failure mode</strong>: installing ①—④ without reading ⑦. skill-creator will faithfully produce the SKILL.md you described, but "should this be split across files?" and "will this description actually trigger?" are judgments it cannot make for you — those live in the best-practices page. Invert it and you get the other failure: read the docs, skip ①, and you will forever be judging your own edits by feel.</div>
+<div class="res"><strong>Resources</strong> · <a href="https://github.com/anthropics/skills/tree/main/skills" target="_blank">anthropics/skills · skills directory</a> · <a href="https://github.com/anthropics/skills/tree/main/template" target="_blank">template/</a> · <a href="https://code.claude.com/docs/en/skills" target="_blank">Claude Code · Skills docs</a></div>
+</div>
+<!-- ============ 2 ============ -->
+<div class="section">
+<span class="num">// 02</span>
+<h2>Don't rank these nine on one list: the denominators differ</h2>
+<div class="claim">Claim: ①—④ are running code, ⑤—⑦ are standards of correctness, ⑧—⑨ are after-the-fact accounting. Comparing them by stars is meaningless — they don't compete in the same market.</div>
+<h3>Background</h3>
+<p><code>anthropics/skills</code> shows roughly <strong>175k stars and 20.7k forks</strong> per the GitHub repo page, 2026-09 (this site's Skill 01 recorded 172k in 2026-08 — about 3k in a month). But that number measures how famous the demo repo is, not which skill inside it anyone uses. All 19 skills share one star count, which makes <code>skill-creator</code> and <code>slack-gif-creator</code> exactly equivalent on that metric. Obviously absurd.</p>
+<p>The more practical reason to keep the layers apart is <strong>substitutability</strong>. ⑤ the template and ⑦ the best-practices page are plain text: copy them into your own repo and you own them forever, with no version risk. ①—④ are executable, so upgrades, dependencies and script rot follow upstream. ⑧—⑨ are Claude Code capabilities and vanish the moment you switch harness. <strong>Three different shelf lives; don't shop for them with one rule.</strong></p>
+<h3>In practice</h3>
+<p>One more trap: <strong>names get copied wrong</strong>. ③ is really <code>web-artifacts-builder</code>, and plenty of aggregator articles print <code>artifacts-builder</code> — install by that name and it fails; point an agent at it and it finds nothing. ⑥ has moved in the same way: the file is still in the repo, but its content is now a single line saying the spec lives at agentskills.io. <strong>Standing rule: any name or path you write into a config or hand to an agent comes from the repo directory or the official doc page, never from an aggregator.</strong></p>
+<div class="fail"><strong>Failure mode</strong>: cloning all of <code>anthropics/skills</code> as a meta-skill bundle. Nineteen skills, and among them <code>algorithmic-art</code>, <code>slack-gif-creator</code> and <code>canvas-design</code> have nothing to do with building skills — all they do is muddy your description candidate pool.</div>
+</div>
+<!-- ============ 3 ============ -->
+<div class="section">
+<span class="num">// 03</span>
+<h2>Three-minute inspection: judge candidates by how the official four are built</h2>
+<div class="claim">Claim: the cheapest way to judge a meta-skill is to check whether it was written to the standard it preaches. The four official skills each happen to demonstrate one criterion you can reuse on the next candidate you meet.</div>
+<h3>Background</h3>
+<p>First the hard limits, quoted from the authoring page: <code>name</code> is at most <strong>64 characters</strong>, lowercase letters, digits and hyphens only, and may not contain reserved words like <code>anthropic</code> or <code>claude</code>; <code>description</code> is at most <strong>1,024 characters</strong>, non-empty, and must be written in the <strong>third person</strong>; the body should stay <strong>under 500 lines</strong>; references must be <strong>one level deep</strong>. The Claude Code docs add a number that is easy to miss: in skill listings, <code>description</code> plus <code>when_to_use</code> is <strong>truncated at 1,536 characters</strong> — the overflow isn't read late, it's cut.</p>
+<h3>In practice</h3>
+<ol>
+<li><strong>Does the description carpet the trigger space?</strong> Read <code>skill-creator</code>'s own: "create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description." Five phrasings in one sentence, because the user could say any of them. <strong>A description reading "Helps with skills" either never fires or fires everywhere.</strong></li>
+<li><strong>Is there a machine-checkable acceptance bar?</strong> <code>mcp-builder</code> requires those ten questions to have answers that "support string comparison verification." That sentence is the watershed: an author who writes it knows what they're aiming at; one who can't, ships to a standard of "looks fine."</li>
+<li><strong>Are deterministic steps frozen into scripts?</strong> <code>web-artifacts-builder</code> puts scaffolding and bundling into <code>init-artifact.sh</code> and <code>bundle-artifact.sh</code> instead of regenerating them each run. Anthropic's stated reasons are blunt: pre-made scripts are more reliable, cheaper (<strong>only the output is billed; the script body never enters context</strong>) and consistent.</li>
+<li><strong>Are references split by domain, one level deep?</strong> <code>claude-api</code> splits into a dozen-plus files by language and topic, leaving SKILL.md as a table of contents. The docs warn explicitly that with nested references Claude may preview with something like <code>head -100</code> and act on partial information — so every reference links straight from SKILL.md, and reference files over 100 lines carry their own table of contents.</li>
+<li><strong>Does the freedom match the task's fragility?</strong> The official analogy is a narrow bridge with cliffs on both sides versus an open field. Database migrations want low freedom (an exact command, plus "do not modify the command or add additional flags"); code review wants high freedom (direction only).</li>
+<li><strong>Can it name the three concrete failures it fixes?</strong> The official checklist says "at least three evaluations created" and "tested with Haiku, Sonnet, and Opus." A meta-skill that can't answer this leaves you no way to tell whether it helps.</li>
+</ol>
+<p><strong>And don't invert the order.</strong> The authoring page makes "create evaluations BEFORE writing extensive documentation" a bolded requirement, in five steps: run real tasks with no skill and document the specific failures → build three scenarios around those gaps → measure the baseline → write just enough instruction to close them → iterate against the baseline. The stated reason: this way you solve real problems instead of documenting imagined ones.</p>
+<div class="res"><strong>Resources</strong> · <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices" target="_blank">Anthropic · Skill authoring best practices</a> (source for all six criteria and the five-step method)</div>
+</div>
+<!-- ============ 4 ============ -->
+<div class="section">
+<span class="num">// 04</span>
+<h2>The honest cost: the docs themselves say you don't need a skill-writing skill</h2>
+<div class="claim">Claim: the real risk here isn't picking wrong, it's <strong>paying for something free</strong> — Claude already knows how to draft a SKILL.md.</div>
+<h3>Background</h3>
+<p>There is a Tip on the authoring best-practices page that is deflating in its directness: <strong>Claude understands the skill format natively; you don't need special system prompts or a "writing skills" skill — just ask Claude to create a skill and it generates properly structured SKILL.md content with appropriate frontmatter.</strong></p>
+<p>So where is <code>skill-creator</code>'s value? <strong>In the evaluation machinery of its second half, not the drafting.</strong> Parallel with/without runs, assertion grading, an aggregated <code>benchmark.json</code> — building that by hand costs you a day. Install it expecting "generate my SKILL.md" and you've paid a context tax for something that was already free.</p>
+<h3>In practice</h3>
+<ul>
+<li><strong>The evaluation story is forked; one file does not run everywhere.</strong> The platform docs give an eval JSON structure (<code>skills</code> / <code>query</code> / <code>files</code> / <code>expected_behavior</code>) and then state plainly that <strong>there is not currently a built-in way to run these evaluations</strong> — you build your own runner. The Claude Code side's <code>skill-creator</code> has its own <code>evals.json</code> → <code>grading.json</code> → <code>benchmark.json</code> pipeline. The two are not interchangeable.</li>
+<li><strong>Passing validate ≠ a healthy skill.</strong> The docs are explicit: run from a marketplace directory, Claude Code <strong>does not open the plugins' skill, agent, command or hook files</strong>; to find errors in those you must validate the individual plugin. Treating <code>claude plugin validate</code> as a quality gate is a misread — it is a syntax check, not a content check.</li>
+<li><strong>Meta-skills are permanent residents installed for occasional work.</strong> You write five skills a year and let <code>skill-creator</code> sit in your description candidate pool for all twelve months. So audit after you ship: <code>/skill-doctor</code> flags <strong>skills that were never invoked</strong>. Delete those — keeping them only makes the rest harder to select.</li>
+<li><strong>Ecosystem drift is a real cost.</strong> The spec moved to <code>agentskills.io</code> and Claude Code's evaluation chapter points there too, which means your skill library now tracks a version outside the repo. Teams working across harnesses should copy the current spec's key fields into their own repo rather than looking them up fresh each time.</li>
+</ul>
+<div class="fail"><strong>Failure mode</strong>: using <code>mcp-builder</code> for a server that wraps one HTTP call. The four phases plus ten verified evaluation questions will cost you a day for half an hour of work. Its economics only work when the server is something others will use and you will maintain.</div>
+</div>
+<!-- ============ 5 ============ -->
+<div class="combo">
+<h3>// ONE-PAGE BUYING CARD</h3>
+<p><strong>Install these three first</strong>: <code>skill-creator</code> (for the evaluation half, not the drafting half) + a copy of <code>template/SKILL.md</code> as your own stub in your own repo (plain text, zero cost, never expires) + <code>/skill-doctor</code> as a fortnightly habit. Add <code>mcp-builder</code> only when you're genuinely writing a server you'll maintain; read <code>claude-api</code> as the specimen for splitting references by domain; install <code>web-artifacts-builder</code> only when you actually need a rich interactive artifact.</p>
+<p><strong>Three minutes before installing</strong>: does the description carpet the trigger space in third person · is there a machine-checkable acceptance bar · are deterministic steps frozen into scripts · are references split by domain and one level deep · does the freedom match the task's fragility · can it name three concrete failures it fixes.</p>
+<p><strong>When writing your own skill, the order is</strong>: run the real task with no skill → document the specific failures → build three scenarios → measure a baseline → write just enough to close the gaps → iterate against the baseline. <strong>Never docs first.</strong></p>
+<p><strong>Hard numbers to keep</strong>: name ≤ 64 chars · description ≤ 1,024 chars · description + when_to_use truncated at 1,536 chars in listings · SKILL.md body &lt; 500 lines · references one level deep · at least three evaluations · tested on Haiku, Sonnet and Opus.</p>
+</div>
+<div class="glossary">
+<h3>// GLOSSARY</h3>
+<dl>
+<dt>meta-skill</dt>
+<dd>A skill whose job is building other skills, servers or applications. Its output isn't an answer; it's another tool.</dd>
+<dt>eval</dt>
+<dd>A set of test cases pairing a prompt with expected behavior, used to measure whether a skill actually improves results. Anthropic asks for at least three.</dd>
+<dt>baseline</dt>
+<dd>The score from running the same tasks with no skill loaded. Without one, "it feels better with the skill" stays a feeling.</dd>
+<dt>benchmark.json</dt>
+<dd><code>skill-creator</code>'s aggregate output: pass rate, duration and token counts for the with-skill and without-skill arms, side by side.</dd>
+<dt>frontmatter</dt>
+<dd>The YAML header at the top of SKILL.md. <code>name</code> (≤64 chars) and <code>description</code> (≤1,024 chars) are required, and they decide whether the skill ever triggers.</dd>
+<dt>progressive disclosure</dt>
+<dd>At startup only every skill's name and description is preloaded; the body is read once the skill is judged relevant; bundled files are read on demand; scripts are executed without their contents entering context.</dd>
+</dl>
+</div>
+<div class="refs">
+<h3>// FURTHER READING</h3>
+<ul>
+<li><a href="https://github.com/anthropics/skills" target="_blank">anthropics/skills</a> — the source for ①—⑥; the README carries the <code>/plugin marketplace add</code> line and both <code>/plugin install</code> lines quoted above</li>
+<li><a href="https://github.com/anthropics/skills/tree/main/skills/skill-creator" target="_blank">skills/skill-creator</a> — the full chain: drafting, parallel with/without runs, grading via <code>agents/grader.md</code>, aggregation via <code>scripts.aggregate_benchmark</code></li>
+<li><a href="https://github.com/anthropics/skills/tree/main/skills/mcp-builder" target="_blank">skills/mcp-builder</a> — the four phases and the "ten independent, read-only, complex, realistic, verifiable" evaluation questions</li>
+<li><a href="https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder" target="_blank">skills/web-artifacts-builder</a> — <code>init-artifact.sh</code> and <code>bundle-artifact.sh</code>; note the real name carries the <code>web-</code> prefix</li>
+<li><a href="https://github.com/anthropics/skills/tree/main/skills/claude-api" target="_blank">skills/claude-api</a> — the official specimen for splitting references by language and domain; Skill 23 takes it apart</li>
+<li><a href="https://github.com/anthropics/skills/tree/main/template" target="_blank">anthropics/skills · template/</a> — a single <code>SKILL.md</code>, the officially sanctioned minimum skeleton</li>
+<li><a href="https://github.com/anthropics/skills/blob/main/spec/agent-skills-spec.md" target="_blank">anthropics/skills · spec/agent-skills-spec.md</a> — now one line: the spec has moved to agentskills.io/specification, so the source of truth sits outside the repo</li>
+<li><a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices" target="_blank">Anthropic · Skill authoring best practices</a> — character limits, 500 lines, one-level references, degrees of freedom, the "build evaluations first" method, and the closing checklist</li>
+<li><a href="https://code.claude.com/docs/en/skills" target="_blank">Claude Code · Extend Claude with skills</a> — <code>/plugin install skill-creator@claude-plugins-official</code>, <code>/skill-doctor</code> (needs v2.1.252+), the 1,536-character truncation, and the skill-location table</li>
+<li><a href="https://code.claude.com/docs/en/plugin-marketplaces" target="_blank">Claude Code · Plugin marketplaces</a> — what <code>claude plugin validate</code> checks, and the limitation that from a marketplace directory it does not open skill files</li>
+<li><a href="coding-skills-roundup-skill1.en.html">This site · Skill 01 · AI Coding Skills Roundup</a> — how skill, subagent, MCP and hooks divide the work, plus the three questions to ask any ranking</li>
+</ul>
+</div>
+<footer>BigCat · Super Individual · Skill 05 · 2026-09-06</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>
