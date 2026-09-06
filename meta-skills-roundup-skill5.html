@@ -64,8 +64,8 @@ footer{text-align:center;padding:50px 0 12px;font-size:0.82rem;color:#6a6e88}
 <div class="container">
 <header>
 <span class="week-tag">SKILL 05 / META · ROUNDUP</span>
-<h1>元技能榜单：造工具的工具</h1>
-<h2>官方给的九件套 — 四个能跑的、三份纸面契约、两个体检器</h2>
+<h1 data-tts="ef3bc63faf4b906d">元技能榜单：造工具的工具</h1>
+<h2 data-tts="03e052898855f23d">官方给的九件套 — 四个能跑的、三份纸面契约、两个体检器</h2>
 <div class="date">2026-09-06 · BigCat</div>
 <p class="pitch">最反直觉的一条写在官方文档里：你并不需要一个「写 skill 的 skill」。所以这九件里最值钱的那半段，不是起草，是评估。</p>
 </header>
@@ -73,13 +73,13 @@ footer{text-align:center;padding:50px 0 12px;font-size:0.82rem;color:#6a6e88}
 <a href="coding-skills-roundup-skill1.html">前置 → Skill 01 AI 编码 Skills 榜单（skill / subagent / MCP / hook 的分工）</a>
 </div>
 <div class="intro">
-<h3>// WHY THIS MATTERS</h3>
+<h3 data-tts="4e15ae8ef88e1271">// WHY THIS MATTERS</h3>
 <p>前四期讲的是「装别人的 skill」。到某一天你会发现，你真正想要的那个 skill 没人写过——它装着你团队的表结构、你的写作口径、你那套没人懂的部署流程。<strong>这一期收的是造工具的工具：起草、评估、打包、体检这条链上，官方真的给了什么。</strong>九个条目全部来自 Anthropic 官方仓库与官方文档，都能点开；第 03 节把这四个官方 skill 自己的写法拆成判据，第 04 节讲这一类最容易白装在哪。</p>
 </div>
 <!-- ============ 1 ============ -->
 <div class="section">
 <span class="num">// 01</span>
-<h2>先给清单：官方这九件，装法都在下面</h2>
+<h2 data-tts="4d5038b2ed8d53a0">先给清单：官方这九件，装法都在下面</h2>
 <div class="claim">论断：元技能不是一类 skill，是三层东西——四个真的会跑的 skill、三份定义「什么算合格」的纸面契约、两个装完之后回头查账的体检器。缺哪一层都会出问题。</div>
 <div class="diagram">条目                            替你干掉的那件事                      什么时候别装/别读
 ──────────────────────────────────────────────────────────────────────────────────
@@ -96,7 +96,7 @@ footer{text-align:center;padding:50px 0 12px;font-size:0.82rem;color:#6a6e88}
 ⑨ claude plugin validate 上手才发现清单 YAML 写错                 不打算发布给别人
 ──────────────────────────────────────────────────────────────────────────────────
 ①—④ 来自 anthropics/skills 仓库；⑤—⑥ 同仓的 template/ 与 spec/;⑧—⑨ 是 Claude Code 自带命令</div>
-<h3>怎么装（命令都是官方页面上的原文）</h3>
+<h3 data-tts="a7f994561b47e1bf">怎么装（命令都是官方页面上的原文）</h3>
 <pre><code><span class="tag-com"># ① 官方 skills 仓库：注册 marketplace，再按包装</span>
 /plugin marketplace add anthropics/skills
 /plugin install example-skills@anthropic-agent-skills
@@ -111,7 +111,7 @@ footer{text-align:center;padding:50px 0 12px;font-size:0.82rem;color:#6a6e88}
 <span class="tag-com"># ⑨ 校验：查 YAML 与清单语法</span>
 claude plugin validate .claude/skills
 </code></pre>
-<h3>逐条说人话</h3>
+<h3 data-tts="f1198d1fbfbb79e2">逐条说人话</h3>
 <ul>
 <li><strong>① skill-creator</strong>（官方）：它真正的重头戏在后半段——为新 skill 写 2–3 条真实测试提示，然后<strong>并行开两组 subagent：一组带 skill、一组不带</strong>，用 <code>agents/grader.md</code> 按断言打分，跑 <code>scripts.aggregate_benchmark</code> 汇成 <code>benchmark.json</code>，再用 <code>eval-viewer/generate_review.py</code> 让人肉过一遍。Claude Code 文档描述的同一条链是：测试用例存进 skill 目录下的 <code>evals/evals.json</code> → 每条用例开独立 subagent 跑 → 结果进 <code>grading.json</code> → 通过率/耗时/token 汇进 <code>benchmark.json</code>。它还能做 A/B 与 description 调优。</li>
 <li><strong>② mcp-builder</strong>（官方）：把「写一个 MCP server」拆成研究规划 → 实现 → 审查测试 → 评估四阶段，Python(FastMCP) 与 Node/TypeScript 两套实现指南各带一份。硬要求是<strong>造 10 道验收题</strong>，每道必须互相独立、只读、复杂、真实、可核验——而且<strong>你得自己先做一遍答出来</strong>，答案要能做字符串比对。</li>
@@ -128,23 +128,23 @@ claude plugin validate .claude/skills
 <!-- ============ 2 ============ -->
 <div class="section">
 <span class="num">// 02</span>
-<h2>这九条不能混着比：三层各自的分母不一样</h2>
+<h2 data-tts="46f22a57cf404ff6">这九条不能混着比：三层各自的分母不一样</h2>
 <div class="claim">论断：①—④ 是「会跑的代码」，⑤—⑦ 是「合格标准」，⑧—⑨ 是「事后查账」。拿 star 数比它们毫无意义，因为它们根本不在同一个市场里竞争。</div>
-<h3>背景与原理</h3>
+<h3 data-tts="4ccea90bc29fa9ad">背景与原理</h3>
 <p><code>anthropics/skills</code> 据 GitHub 仓库页 2026-09 约 <strong>17.5 万 star / 2.07 万 fork</strong>（本站 Skill 01 在 2026-08 记的是 17.2 万，一个月涨了约三千）。但这个数字量的是「示范仓库有多出名」，不是「里面哪个 skill 有人用」——整仓 19 个 skill 共用同一个 star 数，<code>skill-creator</code> 和 <code>slack-gif-creator</code> 在这个指标上完全等价，显然荒谬。</p>
 <p>更实际的分层理由是<strong>可替代性</strong>：⑤ template 与 ⑦ 最佳实践是纯文本，你抄进自己的仓库就永远拥有它，没有版本风险；①—④ 是会跑的东西，升级、依赖、脚本失效都跟着上游走；⑧—⑨ 是 Claude Code 的能力，换个 harness 就没有了。<strong>三层的保质期完全不同，别拿同一套标准挑。</strong></p>
-<h3>实战示例</h3>
+<h3 data-tts="aeba328f985d629c">实战示例</h3>
 <p>还有个坑：<strong>名字会被抄错。</strong>③ 的真名是 <code>web-artifacts-builder</code>，不少聚合文章写成 <code>artifacts-builder</code>——照那个名字装会装不上、让 agent 去找会找不到。同理 ⑥ 的位置也已经变了：仓库里那个文件还在，但内容只剩一句「规范已搬到 agentskills.io」。<strong>硬规矩：任何要写进配置或喂给 agent 的名字与路径，一律以仓库目录或官方文档页面为准。</strong></p>
 <div class="fail"><strong>失败模式</strong>：把整个 <code>anthropics/skills</code> 克隆下来当元技能全家桶——那 19 个里有 <code>algorithmic-art</code>、<code>slack-gif-creator</code>、<code>canvas-design</code>，跟造 skill 一点关系都没有，只会把你的 description 候选池搅浑。</div>
 </div>
 <!-- ============ 3 ============ -->
 <div class="section">
 <span class="num">// 03</span>
-<h2>三分钟验货：把这四个官方 skill 自己的写法当判据</h2>
+<h2 data-tts="d09686caf3b02c55">三分钟验货：把这四个官方 skill 自己的写法当判据</h2>
 <div class="claim">论断：判断一个元技能值不值得装，最省事的办法是看它自己有没有按官方那套标准写。上面四个官方 skill 恰好各自示范了一条，可以直接拿来量你遇到的下一个候选。</div>
-<h3>背景与原理</h3>
+<h3 data-tts="cc4c86d233796795">背景与原理</h3>
 <p>先记住硬约束（官方 authoring 页原文）：<code>name</code> ≤ <strong>64 字符</strong>，只许小写字母、数字、连字符，不能含 <code>anthropic</code> / <code>claude</code> 这类保留词；<code>description</code> ≤ <strong>1024 字符</strong>，非空，必须<strong>第三人称</strong>；正文<strong>建议 500 行以内</strong>；引用<strong>只许一层深</strong>。另外 Claude Code 文档还给了一个容易被忽略的数：skill 列表里 <code>description</code> 与 <code>when_to_use</code> 合起来<strong>按 1536 字符截断</strong>——写超了的部分不是被读到，是被砍掉。</p>
-<h3>实战示例</h3>
+<h3 data-tts="cfd10f207afa9621">实战示例</h3>
 <ol>
 <li><strong>description 是不是把触发词铺满了</strong>——看 <code>skill-creator</code> 的原文：「create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description」。一句里塞进 create / edit / optimize / run evals / benchmark 五组说法，因为用户嘴里可能是任何一种。<strong>只写「Helps with skills」的，要么永不触发，要么到处乱触发。</strong></li>
 <li><strong>有没有可机器核验的验收标准</strong>——<code>mcp-builder</code> 要求那 10 道题「答案要支持字符串比对」。这句是分水岭：写得出这句的作者，知道自己在追求什么；写不出的，交付标准就是「看起来还行」。</li>
@@ -159,12 +159,12 @@ claude plugin validate .claude/skills
 <!-- ============ 4 ============ -->
 <div class="section">
 <span class="num">// 04</span>
-<h2>诚实的代价：官方文档亲口说「你不需要一个写 skill 的 skill」</h2>
+<h2 data-tts="4b4b4fbcf50d00e7">诚实的代价：官方文档亲口说「你不需要一个写 skill 的 skill」</h2>
 <div class="claim">论断：这一类最大的风险不是装错，是<strong>为免费的东西付费</strong>——起草 SKILL.md 这件事，Claude 本来就会。</div>
-<h3>背景与原理</h3>
+<h3 data-tts="69f48f2f5eb2f45c">背景与原理</h3>
 <p>authoring 最佳实践页里有一条 Tip，直白到有点扫兴：<strong>Claude 原生就懂 skill 的格式与结构，你不需要特殊系统提示词、也不需要一个「写 skill 的 skill」，直接叫它写，它就会生成结构正确、frontmatter 齐全的 SKILL.md。</strong></p>
 <p>那 <code>skill-creator</code> 的价值在哪?<strong>在它后半段那套评估机器，不在起草。</strong>并行开两组 subagent 做有/无 skill 对照、按断言打分、汇出 <code>benchmark.json</code>——这套东西你手搓要花一整天。冲着「帮我生成 SKILL.md」去装它，你付了 context 税，换回来的是本来就免费的东西。</p>
-<h3>实战示例</h3>
+<h3 data-tts="7aea88b4532086f1">实战示例</h3>
 <ul>
 <li><strong>评估这条线是分叉的，别以为写一份到处能跑。</strong>平台文档给了评估的 JSON 结构（<code>skills</code> / <code>query</code> / <code>files</code> / <code>expected_behavior</code>），却明说<strong>目前没有内置的方式来跑这些评估</strong>，要自己搭；Claude Code 侧的 <code>skill-creator</code> 则有自己一整套 <code>evals.json</code> → <code>grading.json</code> → <code>benchmark.json</code> 的流程。两条线不通用。</li>
 <li><strong>validate 过了 ≠ skill 没问题。</strong>官方文档写得很清楚：从 marketplace 目录跑校验时，Claude Code <strong>不会打开各插件的 skill / agent / command / hook 文件</strong>；要查那些文件里的错，得对单个插件跑校验。把 <code>claude plugin validate</code> 当质量门是误会——它是语法体检，不是内容体检。</li>
@@ -175,14 +175,14 @@ claude plugin validate .claude/skills
 </div>
 <!-- ============ 5 ============ -->
 <div class="combo">
-<h3>// 一页选购卡</h3>
+<h3 data-tts="8ddb7259d042f3cd">// 一页选购卡</h3>
 <p><strong>先装这三个</strong>：<code>skill-creator</code>（冲评估那半段装，不是冲起草）+ 把 <code>template/SKILL.md</code> 拷成自己仓库里的起手式（纯文本，零成本，永不过期）+ 把 <code>/skill-doctor</code> 变成两周一次的习惯。<code>mcp-builder</code> 只在你真要写一个长期维护的 server 时装；<code>claude-api</code> 当「多域 reference 怎么拆」的范本读；<code>web-artifacts-builder</code> 只在你真要做富交互 artifact 时装。</p>
 <p><strong>装之前三分钟</strong>：description 有没有铺满触发词且第三人称 · 有没有可机器核验的验收标准 · 确定性动作是不是落成了脚本 · reference 是否按域拆且只有一层 · 自由度是否匹配任务脆弱性 · 说不说得出它解决的三个具体失败。</p>
 <p><strong>写自己的 skill 时，顺序是</strong>：跑一遍没有 skill 的真实任务 → 记下具体失败 → 造三个场景 → 量基线 → 只写刚好够补缺口的字 → 对照基线迭代。<strong>别反过来先写文档。</strong></p>
 <p><strong>硬数字备查</strong>：name ≤ 64 字符 · description ≤ 1024 字符 · 列表里 description+when_to_use 按 1536 字符截断 · SKILL.md 正文 &lt; 500 行 · 引用只许一层深 · 至少三条评估 · Haiku/Sonnet/Opus 各测一遍。</p>
 </div>
 <div class="glossary">
-<h3>// 术语表</h3>
+<h3 data-tts="5f98490d0857f082">// 术语表</h3>
 <dl>
 <dt>元技能（meta-skill）</dt>
 <dd>用来造别的 skill / server / 应用的 skill。它的产物不是答案，是另一件工具。</dd>
@@ -199,7 +199,7 @@ claude plugin validate .claude/skills
 </dl>
 </div>
 <div class="refs">
-<h3>// 延伸阅读</h3>
+<h3 data-tts="50758588b367dc62">// 延伸阅读</h3>
 <ul>
 <li><a href="https://github.com/anthropics/skills" target="_blank">anthropics/skills</a> — 本期 ①—⑥ 的源头；README 里 <code>/plugin marketplace add</code> 与两条 <code>/plugin install</code> 命令即上文原文</li>
 <li><a href="https://github.com/anthropics/skills/tree/main/skills/skill-creator" target="_blank">skills/skill-creator</a> — 起草 + 并行对照评估 + <code>agents/grader.md</code> 打分 + <code>scripts.aggregate_benchmark</code> 汇总的完整流程</li>
